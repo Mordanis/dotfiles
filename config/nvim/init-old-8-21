@@ -1,0 +1,194 @@
+" Plugins --------------------------------
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
+Plug 'ervandew/supertab'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+let g:airline_theme='jet'
+let g:airline#extensions#ale#enabled=1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_completion_enabled = 1
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+let g:ale_linters = {
+\  'rust': ['analyzer'],
+\}
+call plug#end()
+" ---------------------------- End Plugins
+
+
+
+" Nice Settings from Bram ----------------
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+filetype indent plugin on
+set nocompatible
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  set undofile		" keep an undo file (undo changes after closing)
+endif
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" Ignore case for lower case, but not upper case
+set ignorecase
+set smartcase
+
+" keep cursor position more stable
+set nostartofline
+
+" ask if wanting to quit without saving changes
+set confirm
+
+" don't beep!
+set visualbell
+set t_vb=
+
+" avoid annoying multi-line command window responses
+set cmdheight=2
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if !has('nvim')
+    if has('mouse')
+      set mouse=a
+      set ttymouse=sgr
+    endif
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+set autoindent		" always set autoindenting on
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+if has('langmap') && exists('+langnoremap')
+  " Prevent that the langmap option applies to characters that result from a
+  " mapping.  If unset (default), this may break plugins (but it's backward
+  " compatible).
+  set langnoremap
+endif
+
+" use block cursor
+set guicursor=a:block-Cursor
+let &t_SI = "\e[1 q"
+let &t_EI = "\e[1 q"
+augroup myCmds
+    au!
+    autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup end
+
+" disable code folding
+set nofoldenable
+
+" set encoding to utf8
+set encoding=utf-8
+set fileencoding=utf-8
+
+" set tab options
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+"make Y act more like D
+map Y y$
+
+" double escape to redraw screen
+nnoremap <esc><esc> :nohl<CR><C-L>
+
+" use relative line numbers
+set number relativenumber
+
+" make buffer navigation easier
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
+" Configure NerdTree
+nnoremap <C-N> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Remap leador to space
+let mapleader = " "
+" ------------ End Nice Settings from Bram
+
+
+
+" Nice Stuff for my personal stuff -------
+nnoremap <leader>p :term python3<CR><C-W>20-<CR>
+nnoremap <leader>m :execute '!/home/john/.scripts/compile-markdown.sh %:p &'<CR> | redraw!
+set cursorline
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" --- End Nice Stuff for my personal stuff
+"
+
+
+
+" NVIM Specific Stuff --------------------
+nnoremap <leader>t :sp term://zsh<CR><C-\><C-n><C-W>20-<CR>i
+let &packpath = &runtimepath
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  }
+}
+EOF
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" -----------------End NVIM Specific Stuff 
+
+
+
+" NEOVIDE SPECIFIC CONFIG---------------- 
+" make buffer navigation easier
+tnoremap <C-H> <C-W><C-H>
+tnoremap <C-J> <C-W><C-J>
+tnoremap <C-K> <C-W><C-K>
+tnoremap <C-L> <C-W><C-L>
+
+let g:neovide_refresh_rate=120
+let g:neovide_transparency=0.92
+let g:neovide_cursor_animation_length=0.05
+let g:neovide_cursor_trail_length=0.1
+let g:neovide_cursor_antialiasing=v:true
+let g:neovide_cursor_vfx_mode="torpedo"
+autocmd TermOpen * startinsert
+" ----------------------End Neovide Config
+
+
+
+colorscheme standard
+set wildmenu

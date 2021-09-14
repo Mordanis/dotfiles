@@ -1,0 +1,10 @@
+{
+    "rust-analyzer.inlayHints.enable":true,
+    "rust-analyzer.inlayHints.typeHints":true,
+    "rust-analyzer.inlayHints.chainingHints":true,
+    "rust-analyzer.inlayHints.typeHintsWithVariable":true,
+    "rust-analyzer.inlayHints.refreshOnInsertMode":false,
+    "rust-analyzer.inlayHints.maxLength":null,
+    "rust-analyzer.inlayHints.typeHintsSeparator":"‣‣",
+    "rust-analyzer.inlayHints.chainingHintsSeparator":"‣"
+}
