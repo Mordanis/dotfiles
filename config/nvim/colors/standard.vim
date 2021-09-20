@@ -112,5 +112,25 @@ hi helpSpecial                guifg=#CCCCCC guibg=NONE    gui=NONE      ctermfg=
 hi helpHyperTextJump          guifg=#40BDFF guibg=NONE    gui=underline ctermfg=039
 hi helpNote                   guifg=#CCCCCC guibg=NONE    gui=NONE      ctermfg=250
 
+" CoC colors
 hi CocRustTypeHint            guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=001
+hi CocFadeOut                 guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=023 ctermbg=256
 hi CocRustChainingHint        guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=009
+
+" Treesitter colors
+hi TSFuncBuiltin              guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=012
+hi TSOperator                 guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=011
+hi TSPunctBracket             guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSPunctSpecial             guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSPunctDelimiter           guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSRepeat                   guifg=#191919 guibg=#40BDFF cterm=bold    ctermfg=011
+hi TSBoolean                  guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=003
+hi TSCharacter                guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=011
+hi TSComment                  guifg=#555555 guibg=NONE    cterm=italic  ctermfg=009
+hi TSConditional              guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=002
+hi TSConstant                 guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=009
+hi TSError                    guifg=#FF3D23 guibg=NONE    cterm=bold    ctermfg=007   ctermbg=NONE
+hi TSFunction                 guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=013
+hi TSKeywordOperator          guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=011
+hi TSField                    guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=006
+hi TSType                     guifg=#EFEFEF guibg=NONE    cterm=bold    ctermfg=002
