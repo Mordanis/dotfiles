@@ -112,7 +112,7 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: Hack FC Ligatured
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
@@ -131,7 +131,7 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: Hack FC Ligatured
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
@@ -150,7 +150,7 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: Hack FC Ligatured
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
@@ -169,7 +169,7 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
+    family: Hack FC Ligatured
     # family: JetBrains Mono
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
@@ -253,7 +253,7 @@ colors:
     yellow:  '0xa9875f'
     blue:    '0x8a195f'
     magenta: '0x715fa9'
-    cyan:    '0x5fa99d'
+    cyan:    '0x4ca99a'
     white:   '0xa5aaba'
 
   # Bright colors
@@ -261,10 +261,10 @@ colors:
     black:   '0x1c1e1e'
     red:     '0xa94c4c'
     green:   '0x82a94c'
-    yellow:  '0xa97e4c'
-    blue:    '0x4c67a9'
-    magenta: '0x634ca9'
-    cyan:    '0x4ca99a'
+    yellow:  '0xb9ae4c'
+    blue:    '0x5c77c9'
+    magenta: '0xa94ce9'
+    cyan:    '0x5fa99d'
     white:   '0xc6ccdf'
 
   # Dim colors
@@ -581,4 +581,3 @@ key_bindings:
   - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
   - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
   - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
-
