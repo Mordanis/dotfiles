@@ -4,37 +4,37 @@ set background=dark
 " Text Markup
 " ----------------------------------------------------------------------------
 
-hi Normal                     guifg=#CCCCCC guibg=#191919 gui=NONE      ctermfg=257	ctermbg=256
-hi NonText                    guifg=#6A6A6A guibg=NONE    gui=NONE      ctermfg=008
-hi Comment                    guifg=#555555 guibg=NONE    gui=NONE      ctermfg=009
-hi Constant                   guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=003
-hi Directory                  guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=014
-hi Identifier                 guifg=#787878 guibg=NONE    gui=NONE      ctermfg=006
-hi PreProc                    guifg=#787878 guibg=NONE    gui=NONE      ctermfg=006
-hi Special                    guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=013
-hi Statement                  guifg=#CCCCCC guibg=NONE    gui=NONE      ctermfg=001
-hi Title                      guifg=#CCCCCC guibg=NONE    gui=bold      ctermfg=006
-hi Type                       guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=010
-hi SpecialKey                 guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=006
-hi Conditional                guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=002
-hi Operator                   guifg=#AAAAAA guibg=NONE    gui=NONE      ctermfg=006
-hi Exception                  guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=003
-hi Label                      guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=013
-hi Repeat                     guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=013
-hi Keyword                    guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=002
-hi String                     guifg=#5697B8 guibg=NONE    gui=NONE      ctermfg=003
-hi Character                  guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=011
-hi Boolean                    guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=003
-hi Number                     guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=003
-hi Function                   guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=012
-hi Underlined                 guifg=#CCCCCC guibg=NONE    gui=underline ctermfg=250
+hi Normal                     guifg=#BAB5A5   guibg=#191715       gui=NONE      ctermfg=257	ctermbg=256
+hi NonText                    guifg=#A5AABA    guibg=#191715       gui=NONE      ctermfg=008
+hi Comment                    guifg=#A5AABA    guibg=#191715       gui=NONE      ctermfg=009
+hi Constant                   guifg=#89A95F    guibg=#191715       gui=NONE      ctermfg=003
+hi Directory                  guifg=#A94CE9   guibg=#191715       gui=NONE      ctermfg=014
+hi Identifier                 guifg=#715FA9    guibg=#191715       gui=NONE      ctermfg=006
+hi PreProc                    guifg=#715FA9    guibg=#191715       gui=NONE      ctermfg=006
+hi Special                    guifg=#5C77C9   guibg=#191715       gui=NONE      ctermfg=013
+hi Statement                  guifg=#171919    guibg=#191715       gui=NONE      ctermfg=001
+hi Title                      guifg=#715FA9    guibg=#191715       gui=bold      ctermfg=006
+hi Type                       guifg=#A94C4C    guibg=#191715       gui=NONE      ctermfg=010
+hi SpecialKey                 guifg=#715FA9    guibg=#191715       gui=NONE      ctermfg=006
+hi Conditional                guifg=#195f5f    guibg=#191715       gui=NONE      ctermfg=002
+hi Operator                   guifg=#715FA9    guibg=#191715       gui=NONE      ctermfg=006
+hi Exception                  guifg=#89A95F    guibg=#191715       gui=NONE      ctermfg=003
+hi Label                      guifg=#5C77C9   guibg=#191715       gui=NONE      ctermfg=013
+hi Repeat                     guifg=#5C77C9   guibg=#191715       gui=NONE      ctermfg=013
+hi Keyword                    guifg=#195f5f    guibg=#191715       gui=NONE      ctermfg=002
+hi String                     guifg=#89A95F    guibg=#191715       gui=NONE      ctermfg=003
+hi Character                  guifg=#82A94C   guibg=#191715       gui=NONE      ctermfg=011
+hi Boolean                    guifg=#89A95F    guibg=#191715       gui=NONE      ctermfg=003
+hi Number                     guifg=#89A95F    guibg=#191715       gui=NONE      ctermfg=003
+hi Function                   guifg=#B9AE4C   guibg=#191715       gui=NONE      ctermfg=012
+hi Underlined                 guifg=#195f5f    guibg=guicolors[11]       gui=underline ctermfg=012
 
 " ============================================================================
 " Highlighting
 " ----------------------------------------------------------------------------
 
-hi Cursor                     guifg=#6A6A6A guibg=#EFEFEF gui=NONE      ctermfg=008   ctermbg=255
-hi CursorIM                   guifg=#191919 guibg=#CCCCCC gui=NONE      ctermfg=008   ctermbg=255
+hi Cursor                     guifg=#6A6A6A guibg=#EFEFEF gui=NONE      ctermfg=008   ctermbg=015
+hi CursorIM                   guifg=#191919 guibg=#CCCCCC gui=NONE      ctermfg=008   ctermbg=015
 hi CursorColumn               guifg=NONE    guibg=#292929 gui=NONE      ctermfg=NONE  ctermbg=008     cterm=NONE
 hi CursorLine                 guifg=NONE    guibg=#292929 gui=NONE      ctermfg=NONE  ctermbg=008     cterm=NONE
 hi Visual                     guifg=#EFEFEF guibg=#515151 gui=NONE      ctermfg=255   ctermbg=008
@@ -97,10 +97,10 @@ hi GitGutterDeleteDefault     guifg=#FF3D23 guibg=NONE    gui=NONE      ctermfg=
 " Spelling
 " ----------------------------------------------------------------------------
 
-hi SpellBad                   guisp=#FF3D23 guibg=NONE    gui=undercurl  ctermfg=255  ctermbg=009   cterm=underline
-hi SpellCap                   guisp=#87BF19 guibg=NONE    gui=undercurl  ctermfg=007  ctermbg=000   cterm=underline
-hi SpellLocal                 guisp=#DEDD5A guibg=NONE    gui=undercurl  ctermfg=255  ctermbg=226   cterm=underline
-hi SpellRare                  guisp=#DEDD5A guibg=NONE    gui=undercurl  ctermfg=255  ctermbg=226   cterm=underline
+hi SpellBad                   guisp=#1C1E1E guibg=NONE    gui=undercurl  ctermfg=255  ctermbg=257   cterm=underline
+hi SpellCap                   guisp=#171919 guibg=NONE    gui=undercurl  ctermfg=007  ctermbg=257   cterm=underline
+hi SpellLocal                 guisp=g:guicolors[4] guibg=NONE    gui=undercurl  ctermfg=5  ctermbg=257   cterm=underline
+hi SpellRare                  guisp=g:guicolors[4] guibg=NONE    gui=undercurl  ctermfg=5  ctermbg=257   cterm=underline
 
 
 
@@ -108,29 +108,29 @@ hi SpellRare                  guisp=#DEDD5A guibg=NONE    gui=undercurl  ctermfg
 " Others
 " ----------------------------------------------------------------------------
 
-hi helpSpecial                guifg=#CCCCCC guibg=NONE    gui=NONE      ctermfg=250
-hi helpHyperTextJump          guifg=#40BDFF guibg=NONE    gui=underline ctermfg=039
-hi helpNote                   guifg=#CCCCCC guibg=NONE    gui=NONE      ctermfg=250
+hi helpSpecial                guifg=#A9875F guibg=NONE    gui=NONE      ctermfg=004
+hi helpHyperTextJump          guifg=#A9875F guibg=NONE    gui=underline ctermfg=004
+hi helpNote                   guifg=#A9875F guibg=NONE    gui=NONE      ctermfg=004
 
 " CoC colors
-hi CocRustTypeHint            guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=001
-hi CocFadeOut                 guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=023 ctermbg=256
-hi CocRustChainingHint        guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=009
+hi CocRustTypeHint            guifg=#4C77C9 guibg=#171919 gui=NONE      ctermfg=001
+hi CocFadeOut                 guifg=#1E1E1E guibg=#171919 gui=NONE      ctermfg=023 ctermbg=256
+hi CocRustChainingHint        guifg=#4CA99A guibg=#171919 gui=NONE      ctermfg=009
 
 " Treesitter colors
-hi TSFuncBuiltin              guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=012
-hi TSOperator                 guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=011
-hi TSPunctBracket             guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSPunctSpecial             guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSPunctDelimiter           guifg=#191919 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSRepeat                   guifg=#191919 guibg=#40BDFF cterm=bold    ctermfg=011
-hi TSBoolean                  guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=003
-hi TSCharacter                guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=011
-hi TSComment                  guifg=#555555 guibg=NONE    cterm=italic  ctermfg=009
-hi TSConditional              guifg=#64B2DB guibg=NONE    gui=NONE      ctermfg=002
-hi TSConstant                 guifg=#40BDFF guibg=NONE    gui=NONE      ctermfg=009
-hi TSError                    guifg=#FF3D23 guibg=NONE    cterm=bold    ctermfg=007   ctermbg=NONE
-hi TSFunction                 guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=013
-hi TSKeywordOperator          guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=011
-hi TSField                    guifg=#EFEFEF guibg=NONE    gui=NONE      ctermfg=006
-hi TSType                     guifg=#EFEFEF guibg=NONE    cterm=bold    ctermfg=002
+hi TSFuncBuiltin              guifg=#B9AE4C guibg=#40BDFF gui=NONE      ctermfg=012
+hi TSOperator                 guifg=#82A94C guibg=#40BDFF gui=NONE      ctermfg=011
+hi TSPunctBracket             guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSPunctSpecial             guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSPunctDelimiter           guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
+hi TSRepeat                   guifg=#82A94C guibg=#40BDFF cterm=bold    ctermfg=011
+hi TSBoolean                  guifg=#89A95F guibg=NONE    gui=NONE      ctermfg=003
+hi TSCharacter                guifg=#82A94C guibg=NONE    gui=NONE      ctermfg=011
+hi TSComment                  guifg=#A5AABA guibg=NONE    cterm=italic  ctermfg=009
+hi TSConditional              guifg=#195f5f guibg=NONE    gui=NONE      ctermfg=002
+hi TSConstant                 guifg=#A5AABA guibg=NONE    gui=NONE      ctermfg=009
+hi TSError                    guifg=#4CA99A guibg=NONE    cterm=bold    ctermfg=007   ctermbg=NONE
+hi TSFunction                 guifg=#5C77C9 guibg=NONE    gui=NONE      ctermfg=013
+hi TSKeywordOperator          guifg=#82A94C guibg=NONE    gui=NONE      ctermfg=011
+hi TSField                    guifg=#715FA9 guibg=NONE    gui=NONE      ctermfg=006
+hi TSType                     guifg=#195f5f guibg=NONE    cterm=bold    ctermfg=002
