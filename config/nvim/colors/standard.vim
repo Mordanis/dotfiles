@@ -1,4 +1,5 @@
 set background=dark
+set guifont="Hack Nerd Font Mono FC Ligatured Regular:h7"
 
 " ============================================================================
 " Text Markup
@@ -118,12 +119,12 @@ hi CocFadeOut                 guifg=#1E1E1E guibg=#171919 gui=NONE      ctermfg=
 hi CocRustChainingHint        guifg=#4CA99A guibg=#171919 gui=NONE      ctermfg=009
 
 " Treesitter colors
-hi TSFuncBuiltin              guifg=#B9AE4C guibg=#40BDFF gui=NONE      ctermfg=012
-hi TSOperator                 guifg=#82A94C guibg=#40BDFF gui=NONE      ctermfg=011
-hi TSPunctBracket             guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSPunctSpecial             guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSPunctDelimiter           guifg=#191715 guibg=#40BDFF gui=NONE      ctermfg=257
-hi TSRepeat                   guifg=#82A94C guibg=#40BDFF cterm=bold    ctermfg=011
+hi TSFuncBuiltin              guifg=#B9AE4C guibg=NONE    gui=NONE      ctermfg=012
+hi TSOperator                 guifg=#82A94C guibg=NONE    gui=NONE      ctermfg=011
+hi TSPunctBracket             guifg=#a9875f guibg=NONE    gui=NONE      ctermfg=257
+hi TSPunctSpecial             guifg=#a9875f guibg=NONE    gui=NONE      ctermfg=257
+hi TSPunctDelimiter           guifg=#a9875f guibg=NONE    gui=NONE      ctermfg=257
+hi TSRepeat                   guifg=#82A94C guibg=NONE	  cterm=bold    ctermfg=011
 hi TSBoolean                  guifg=#89A95F guibg=NONE    gui=NONE      ctermfg=003
 hi TSCharacter                guifg=#82A94C guibg=NONE    gui=NONE      ctermfg=011
 hi TSComment                  guifg=#A5AABA guibg=NONE    cterm=italic  ctermfg=009
