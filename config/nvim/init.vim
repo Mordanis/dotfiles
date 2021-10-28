@@ -1,6 +1,7 @@
 " Fish doesn't play all that well with others
-set shell=/bin/bash
 let mapleader = "\<Space>"
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
 
 " =============================================================================
 " # PLUGINS
@@ -24,6 +25,7 @@ Plug 'airblade/vim-rooter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -72,7 +74,7 @@ local on_attach = function(client, bufnr)
   require'completion'.on_attach(client)
 end
 
-local servers = { "rust_analyzer" , "pylsp" }
+local servers = { "rust_analyzer" , "pyright"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -89,6 +91,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+require'nvim-treesitter.configs'.setup {
+	highlight = {enable = true}
+}
+
 END
 
 " Java
@@ -133,7 +140,7 @@ filetype plugin indent on
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
-set scrolloff=12
+set scrolloff=5
 set hidden
 set nowrap
 set nojoinspaces
@@ -317,6 +324,7 @@ let g:airline_theme='jet'
 " =============================================================================
 " # Footer
 " =============================================================================
+set guifont=ligconsolata:h10.5
 
 " nvim
 if has('nvim')
