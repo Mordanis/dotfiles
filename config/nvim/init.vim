@@ -3,14 +3,91 @@ let mapleader = "\<Space>"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
-" =============================================================================
+" ==============================================================================
 " # PLUGINS
-" =============================================================================
+" ==============================================================================
 " Load vundle
 set nocompatible
 filetype off
 set rtp+=~/dev/others/base16/templates/vim/
 call plug#begin()
+
+" nvim-tree is a bit cranky?
+let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_disable_window_picker = 1 "0 by default, will disable the window picker.
+let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
+let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+let g:nvim_tree_create_in_closed_folder = 0 "1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+let g:nvim_tree_refresh_wait = 500 "1000 by default, control how often the tree can be refreshed, 1000 means the tree can be refresh once per 1000ms.
+let g:nvim_tree_window_picker_exclude = {
+    \   'filetype': [
+    \     'notify',
+    \     'packer',
+    \     'qf'
+    \   ],
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
+" Dictionary of buffer option names mapped to a list of option values that
+" indicates to the window picker that the buffer's window should not be
+" selectable.
+let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \ 'folder_arrows': 0,
+    \ }
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath.
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
+
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
+
+set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+
 
 " Load plugins
 " VIM enhancements
@@ -26,6 +103,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
+Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'farseer90718/vim-taskwarrior'
+Plug 'chrisbra/Colorizer'
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -35,11 +119,27 @@ Plug 'rhysd/vim-clang-format'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-Plug 'scrooloose/nerdtree'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For vsnip users.
+Plug 'hrsh7th/vim-vsnip'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+
 call plug#end()
+
+
 
 " LSP configuration
 lua << END
@@ -74,7 +174,7 @@ local on_attach = function(client, bufnr)
   require'completion'.on_attach(client)
 end
 
-local servers = { "rust_analyzer" , "pyright"}
+local servers = { "rust_analyzer" , "pyright",  "clangd", "pylsp"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -83,6 +183,30 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
+
+require'nvim-tree'.setup{}
+require'nvim-web-devicons'.setup{}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -94,6 +218,71 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 require'nvim-treesitter.configs'.setup {
 	highlight = {enable = true}
+}
+
+
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+require('lspconfig')['rust_analyzer'].setup {
+  capabilities = capabilities
+}
+require('lspconfig')['pyright'].setup {
+  capabilities = capabilities
+}
+require('lspconfig')['clangd'].setup {
+  capabilities = capabilities
 }
 
 END
@@ -113,125 +302,7 @@ let g:localvimrc_ask = 0
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
-let g:rust_clip_command = 'xclip -selection clipboard'
 
-" Completion
-" Better completion
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
-
-" Better display for messages
-set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" Golang
-let g:go_play_open_browser = 0
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
-let g:go_bin_path = expand("~/dev/go/bin")
-
-" =============================================================================
-" # Editor settings
-" =============================================================================
-filetype plugin indent on
-set autoindent
-set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
-set encoding=utf-8
-set scrolloff=5
-set hidden
-set nowrap
-set nojoinspaces
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_frontmatter = 1
-" Always draw sign column. Prevent buffer moving when adding/deleting sign.
-set signcolumn=yes
-
-" Settings needed for .lvimrc
-set exrc
-set secure
-
-" Sane splits
-set splitright
-set splitbelow
-
-" Permanent undo
-set undodir=~/.cache/vimdid
-set undofile
-
-" Decent wildmenu
-set wildmenu
-set wildmode=list:longest
-set wildignore=.git,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
-
-" Use wide tabs
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set noexpandtab
-
-" Wrapping options
-set formatoptions=tc " wrap text and comments using textwidth
-set formatoptions+=r " continue comments when pressing ENTER in I mode
-set formatoptions+=q " enable formatting of comments with gq
-set formatoptions+=n " detect lists for formatting
-set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
-
-" Proper search
-set incsearch
-set ignorecase
-set smartcase
-set gdefault
-
-" Search results centered please
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-
-" Very magic by default
-nnoremap ? ?\v
-nnoremap / /\v
-cnoremap %s/ %sm/
-
-" =============================================================================
-" # GUI settings
-" =============================================================================
-set guioptions-=T " Remove toolbar
-set vb t_vb= " No more beeps
-set backspace=2 " Backspace over newlines
-set nofoldenable
-set ttyfast
-" https://github.com/vim/vim/issues/1735#issuecomment-383353563
-set lazyredraw
-set synmaxcol=500
-set laststatus=2
-set relativenumber " Relative line numbers
-set number " Also show current absolute line
-set diffopt+=iwhite " No whitespace in vimdiff
-" Make diffing better: https://vimways.org/2018/the-power-of-diff/
-set diffopt+=algorithm:patience
-set diffopt+=indent-heuristic
-set colorcolumn=80 " and give me a colored column
-set showcmd " Show (partial) command in status line.
-set mouse=a " Enable mouse usage (all modes) in terminals
-set shortmess+=c " don't give |ins-completion-menu| messages.
-
-" Show those damn hidden characters
-" Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
-set listchars=nbsp:¬,extends:»,precedes:«,trail:•
-
-" =============================================================================
-" # Keyboard shortcuts
-" =============================================================================
-" ; as :
-nnoremap ; :
-
-" Ctrl+j and Ctrl+k as Esc
 " Ctrl-j is a little awkward unfortunately:
 " https://github.com/neovim/neovim/issues/5916
 " So we also map Ctrl+k
@@ -263,9 +334,9 @@ nnoremap <leader><leader> <c-^>
 " <leader>, shows/hides hidden characters
 nnoremap <leader>, :set invlist<cr>
 
-" =============================================================================
+" ==============================================================================
 " # Autocommands
-" =============================================================================
+" ==============================================================================
 
 " Prevent accidental writes to buffers that shouldn't be edited
 autocmd BufRead *.orig set readonly
@@ -307,24 +378,62 @@ nnoremap <esc><esc> :nohl<CR><C-L>
 "make Y act more like D
 map Y y$
 
-" Configure NerdTree
-
-" Configure NerdTree
-nnoremap <C-N> :NERDTreeToggle<CR>
 
 "Custom actions
 nnoremap <leader>h gg0O<esc>:0r ~/.vim/templates/python-header.py<CR> 2j2li
 nnoremap <F3> <esc>:call job_start('md-view %') <CR><CR>
-nmap <silent> <leader>d <Plug>(coc-definition)
+" Ignore tabs in neovide
+
+nnoremap <M-h> <nop>
+nnoremap <M-j> <nop>
+nnoremap <M-k> <nop>
+nnoremap <M-l> <nop>
+inoremap <M-h> <nop>
+inoremap <M-j> <nop>
+inoremap <M-k> <nop>
+inoremap <M-l> <nop>
+nnoremap <M-.> <nop>
+inoremap <M-.> <nop>
+nnoremap <M-,> <nop>
+inoremap <M-,> <nop>
+nnoremap <M-1> <nop>
+inoremap <M-1> <nop>
+nnoremap <M-2> <nop>
+inoremap <M-2> <nop>
+nnoremap <M-3> <nop>
+inoremap <M-3> <nop>
+nnoremap <M-4> <nop>
+inoremap <M-4> <nop>
+nnoremap <M-5> <nop>
+inoremap <M-5> <nop>
+nnoremap <M-6> <nop>
+inoremap <M-6> <nop>
+nnoremap <M-7> <nop>
+inoremap <M-7> <nop>
+nnoremap <M-8> <nop>
+inoremap <M-8> <nop>
+nnoremap <M-9> <nop>
+inoremap <M-9> <nop>
 
 " Colors
 colorscheme standard
 let g:airline_theme='jet'
 
-" =============================================================================
+" ==============================================================================
 " # Footer
-" =============================================================================
+" ==============================================================================
 set guifont=ligconsolata:h10.5
+set relativenumber
+" let g:vimwiki_listsyms = '✗○◐●✓'
+
+let g:neovide_transparency=0.94
+let g:neovide_cursor_animation_length=0.13
+let g:neovide_refresh_rate=140
+let g:neovide_cursor_antialiasing=v:true
+let g:neovide_window_floating_opacity = 0.5
+let g:neovide_cursor_gfx_mode = "railgun"
+let g:colorizer_auto_filetype='css,html,py,txt'
+let g:colorizer_disable_bufleave = 1
 
 " nvim
 if has('nvim')
